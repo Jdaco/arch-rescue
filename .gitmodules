@@ -1,0 +1,3 @@
+[submodule "airootfs/root/ansible-workstation"]
+	path = airootfs/root/ansible-workstation
+	url = https://github.com/Jdaco/ansible-workstation
