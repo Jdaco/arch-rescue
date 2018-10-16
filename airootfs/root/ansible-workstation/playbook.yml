@@ -1,0 +1,148 @@
+- name: Configure workstation
+  hosts: all
+  vars:
+    user: chaise
+    home: /home/chaise
+  vars_files:
+    - ./packs.yml
+  become: yes
+  tasks:
+    - name: Init keyring
+      command: 'pacman-key --init'
+
+    - name: Populate keyring
+      command: 'pacman-key --populate archlinux'
+
+    - name: Add xyne to pacman.conf
+      shell: "echo '[xyne-any]\nServer=http://xyne.archlinux.ca/repos/xyne' >> /etc/pacman.conf"
+
+    - name: Refresh pacman database and force key import
+      shell: 'yes | pacman -Syy'
+
+    - name: Install xyne packages
+      pacman:
+        name: "{{ packages.xyne }}"
+
+    - name: Copy rootfs files
+      copy:
+        src: rootfs/
+        dest: /
+    
+    - name: Refresh repoman repo list
+      command: repoman -r
+
+    - name: Run repoman
+      command: repoman -e xyne-any xyne-x86_64 multilib -u
+
+    - name: Update mirrorlist
+      command: reflector -c US -f 10 --threads 8 --verbose --sort rate --save /etc/pacman.d/mirrorlist -p http
+
+    - name: Refresh repos
+      pacman:
+        update_cache: yes
+
+    - name: Install base-devel packages
+      pacman:
+        name: base-devel
+
+    - name: Install system packages
+      pacman:
+        name: "{{ packages.system }}" 
+    
+    - name: Install development packages
+      pacman:
+        name: "{{ packages.development }}" 
+       
+    - name: Install arch packages
+      pacman:
+        name: "{{ packages.arch }}" 
+      
+    - name: Install audio packages
+      pacman:
+        name: "{{ packages.audio }}" 
+      
+    - name: Install media packages
+      pacman:
+        name: "{{ packages.media }}" 
+      
+    - name: Install monitoring packages
+      pacman:
+        name: "{{ packages.monitoring }}" 
+      
+    - name: Install network packages
+      pacman:
+        name: "{{ packages.network }}" 
+      
+    - name: Install other packages
+      pacman:
+        name: "{{ packages.other }}" 
+      
+    - name: Install printing packages
+      pacman:
+        name: "{{ packages.printing }}" 
+      
+    - name: Install x packages
+      pacman:
+        name: "{{ packages.x }}" 
+      
+    - name: Install xapps packages
+      pacman:
+        name: "{{ packages.xapps }}" 
+
+    - name: Set user shell
+      command: "chsh -s /usr/bin/zsh {{ user }}"
+
+    - name: Create aur_builder user
+      user:
+        name: aur_builder
+        group: wheel
+
+    - name: Add aur_builder to sudoers
+      lineinfile:
+        path: /etc/sudoers.d/11-install-aur_builder
+        line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+        create: yes
+        validate: 'visudo -cf %s'
+
+    - name: Install AUR packages
+      become: yes
+      become_user: aur_builder
+      aur: 
+        name: "{{ packages.aur }}"
+
+    - name: Install Browser-Sync
+      npm:
+        name: "browser-sync"
+        global: yes
+
+    - name: Install Stylelint
+      npm:
+        name: stylelint
+        global: yes
+
+    - name: Install go-jira
+      get_url:
+        url: https://github.com/Netflix-Skunkworks/go-jira/releases/download/v1.0.20/jira-linux-amd64
+        dest: /usr/bin/jira
+        mode: 0755
+
+    - name: Set Timezone
+      shell: "rm -f /etc/localtime && ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime"
+
+    - name: Set Locale
+      command: "echo 'LANG=en_US.UTF-8' > /etc/locale.conf"
+
+    - name: Clone dotfiles repo
+      become: no
+      git:
+        repo: 'https://github.com/Jdaco/dotfiles'
+        dest: "{{ home }}/.dotfiles"
+        bare: yes
+
+    - name: Checkout dotfiles
+      become: no
+      command: "git --git-dir {{ home }}/.dotfiles --work-tree {{ home }} checkout -f master"
+
+    - name: Initialize dotfile submodules
+      become: no
+      shell: "git --git-dir {{ home }}/.dotfiles --work-tree {{ home }} submodule init && git --git-dir {{ home }}/.dotfiles --work-tree {{ home }} submodule update"
