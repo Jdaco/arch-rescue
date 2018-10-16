@@ -1,0 +1,170 @@
+{
+  "community": {
+    "architectures": [
+      "i686",
+      "x86_64"
+    ],
+    "dependencies": [
+      "core",
+      "extra"
+    ],
+    "description": "Official Arch Linux community repository.",
+    "locations": [
+      "Include = /etc/pacman.d/mirrorlist"
+    ],
+    "options": {
+      "SigLevel": null
+    }
+  },
+  "community-testing": {
+    "architectures": [
+      "i686",
+      "x86_64"
+    ],
+    "dependencies": [
+      "community",
+      "testing"
+    ],
+    "description": "Official Arch Linux COMMUNITY-TESTING repository with candidates for [community].\nThis must be enabled before [community].",
+    "docurl": "https://wiki.archlinux.org/index.php/Official_Repositories#.5Bcommunity-testing.5D",
+    "locations": [
+      "Include = /etc/pacman.d/mirrorlist"
+    ],
+    "options": {
+      "SigLevel": null
+    }
+  },
+  "core": {
+    "architectures": [
+      "i686",
+      "x86_64"
+    ],
+    "dependencies": [],
+    "description": "Official Arch Linux core repository.",
+    "locations": [
+      "Include = /etc/pacman.d/mirrorlist"
+    ],
+    "options": {
+      "SigLevel": null
+    }
+  },
+  "extra": {
+    "architectures": [
+      "i686",
+      "x86_64"
+    ],
+    "dependencies": [
+      "core"
+    ],
+    "description": "Official Arch Linux extra repository.",
+    "locations": [
+      "Include = /etc/pacman.d/mirrorlist"
+    ],
+    "options": {
+      "SigLevel": null
+    }
+  },
+  "multilib": {
+    "architectures": [
+      "x86_64"
+    ],
+    "dependencies": [
+      "core",
+      "extra",
+      "community"
+    ],
+    "description": "Official Arch Linux multilib repository.\n32-bit applications for x86_64 systems.",
+    "locations": [
+      "Include = /etc/pacman.d/mirrorlist"
+    ],
+    "options": {
+      "SigLevel": null
+    }
+  },
+  "multilib-testing": {
+    "architectures": [
+      "x86_64"
+    ],
+    "dependencies": [
+      "multilib",
+      "testing"
+    ],
+    "description": "Official Arch Linux MULTILIB-TESTING repository with candidates for [multilib].\nThis must be enabled before [multilib].",
+    "docurl": "https://wiki.archlinux.org/index.php/Official_Repositories#.5Bmultilib-testing.5D",
+    "locations": [
+      "Include = /etc/pacman.d/mirrorlist"
+    ],
+    "options": {
+      "SigLevel": null
+    }
+  },
+  "testing": {
+    "architectures": [
+      "i686",
+      "x86_64"
+    ],
+    "dependencies": [
+      "core",
+      "extra"
+    ],
+    "description": "Official Arch Linux TESTING repository with candidates for [code], and [extra].\nThis must be enabled before [core].\nIf [community] is used, you also need [community-testing], [multlilib] requires [multilib-testing]",
+    "docurl": "https://wiki.archlinux.org/index.php/Official_Repositories#.5Btesting.5D",
+    "locations": [
+      "Include = /etc/pacman.d/mirrorlist"
+    ],
+    "options": {
+      "SigLevel": null
+    }
+  },
+  "xyne-any": {
+    "architectures": [
+      "any"
+    ],
+    "dependencies": [
+      "core",
+      "extra",
+      "community"
+    ],
+    "description": "A repo for Xyne's own projects: http://xyne.archlinux.ca/projects/\nPackages for the \"any.\" architecture.\nUse this repo only if there is no matching [xyne-*] repo for your architecture.",
+    "locations": [
+      "Server = http://xyne.archlinux.ca/repos/xyne"
+    ],
+    "options": {
+      "SigLevel": "Required"
+    }
+  },
+  "xyne-x86_64": {
+    "architectures": [
+      "x86_64"
+    ],
+    "dependencies": [
+      "core",
+      "extra",
+      "community"
+    ],
+    "description": "A repo for Xyne's own projects: http://xyne.archlinux.ca/projects/\nPackages for the \"x86_64.\" architecture.\nNote that this includes all packages in [xyne-any]",
+    "locations": [
+      "Server = http://xyne.archlinux.ca/repos/xyne"
+    ],
+    "options": {
+      "SigLevel": "Required"
+    }
+  },
+  "archzfs": {
+    "architectures": [
+      "x86_64"
+    ],
+    "dependencies": [
+      "core",
+      "extra",
+      "community"
+    ],
+    "description": "Packages for ZFS on Arch Linux",
+    "locations": [
+      "Server = http://archzfs.com/$repo/x86_64"
+    ],
+    "options": {
+      "SigLevel": "Required"
+    }
+  }
+}

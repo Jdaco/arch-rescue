@@ -1,0 +1,195 @@
+---
+packages:
+  arch:
+    - archiso
+
+  audio:
+    - mpc
+    - mpd
+    - ncmpcpp
+    - pamixer
+    - pulseaudio
+    - pulseaudio-alsa
+    - pulsemixer
+    - projectm
+    - projectm-pulseaudio
+
+  aur:
+    - boxes
+    - cava
+    - gitflow-avh-git
+    - grv
+    - nvm
+    - nvme-cli
+    - plantuml
+    - python-stormssh
+    - teamviewer12
+    - ttf-ms-fonts
+    - wtfutil-git
+
+  development:
+    - ansible
+    - ansible-lint
+    - ctags
+    - diff-so-fancy
+    - eslint
+    - fzf
+    - git
+    - git-lfs
+    - go
+    - ipython
+    - ipython2
+    - mono
+    - nodejs
+    - npm
+    - packer
+    - python2-jedi
+    - python2-pytest
+    - python2-tox
+    - python-beautifulsoup4
+    - python-jedi
+    - python-lxml
+    - python-pudb
+    - python-pylint
+    - python-pytest
+    - python-requests
+    - python-tox
+    - python-virtualenv-clone
+    - python-virtualenvwrapper
+    - tidy
+    - vagrant
+    - virtualbox
+    - yapf
+    - yarn
+
+  media:
+    - beets
+    - cdrdao
+    - cdrtools
+    - dvd+rw-tools
+    - ffmpeg
+    - icecast
+    - imagemagick
+
+  monitoring:
+    - acpi
+    - hddtemp
+    - iotop
+    - sysstat
+
+  network:
+    - bind-tools
+    - gnu-netcat
+    - iw
+    - net-tools
+    - nmap
+    - socat
+    - tcpdump
+    - tor
+    - transmission-cli
+    - wireless_tools
+    - wpa_supplicant
+
+  other:
+    - hledger
+    - youtube-dl
+    - irssi
+
+  printing:
+    - cups
+    - hplip
+
+  system:
+    - atool
+    - bat
+    - bauerbill
+    - chntpw
+    - cmake
+    - cronie
+    - dialog
+    - dos2unix
+    - exa
+    - exfat-utils
+    - gconf
+    - gptfdisk
+    - haveged
+    - hdparm
+    - highlight
+    - lesspipe
+    - lsof
+    - mlocate
+    - ntfs-3g
+    - ntp
+    - openssh
+    - p7zip
+    - parallel
+    - parted
+    - pv
+    - pyalpm
+    - python2-pip
+    - python-docutils
+    - python-pip
+    - ranger
+    - rng-tools
+    - rsync
+    - sshfs
+    - syslinux
+    - tmux
+    - tmuxp
+    - tree
+    - unrar
+    - unzip
+    - vim
+    - w3m
+    - wget
+    - wgetpaste
+    - which
+    - zip
+    - zsh
+
+  x:
+    - dmenu
+    - nvidia
+    - nvidia-settings
+    - python2-sh
+    - python-sh
+    - qtile
+    - scrot
+    - tamsyn-font
+    - termite
+    - termite-terminfo
+    - ttf-inconsolata
+    - xclip
+    - xf86-video-intel
+    - xf86-video-nouveau
+    - xorg
+    - xorg-xev
+    - xorg-xinit
+    - xorg-xlsfonts
+    - xorg-xrandr
+    - xsel
+
+  xapps:
+    - firefox
+    - chromium
+    - flashplugin
+    - libreoffice-fresh
+    - fbreader
+    - mupdf
+
+    - imv
+    - mpv
+    - gparted
+    - scribus
+    - gimp
+
+  zfs:
+    - zfs-linux-git
+
+  npm:
+    - browser-sync
+    - stylelint
+
+  xyne:
+    - reflector
+    - repoman
